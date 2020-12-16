@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <title>
+    {% block title %}
+    Get Mobile
+    {% endblock %}
+  </title>
+</head>
+<body>
+  {% block content%}
+  {% if request.user.is_authenticated %}
+  <div class="table">
+  <table>
+    <tr>
+      <th>URL</th>
+      <th>Status</th>
+      <th>Pause update</th>
+    </tr>
+    <tr>
+      {% csrf_token %}
+      {% for url, status in urls.items %}
+      <td><a href="{{url}}">{{url}}</a></td>
+      <td class='status'>{{status}}</td>
+      <td><button class='btn'type="button" name="{{url}}">Pause</button>
+      <button class='btn_up'type="button" name="{{url}}">Unpause</button></td>
+    </tr>
+    {%endfor%}
+  </table>
+    </div>
+    <div class="d-flex">
+      <input type="text" placeholder='seconds' class='interval' name="interval" value="">
+      <button type="button" class='interval interval_btn' name="change_interval_btn">Change interval</button>
+    </div>
+
+
+  {% else %}
+      <a href="/accounts/login/">Войти</a>
+  {%endif %}
+  {% endblock %}
+</body>
+<footer>
+  <script
+  src="http://code.jquery.com/jquery-3.5.1.slim.js"
+  integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM="
+  crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/static/js/script.js"></script>
+
+</footer>

@@ -1,0 +1,74 @@
+
+body {
+	overflow-x: hidden;
+	font-family: 'Montserrat', sans-serif;
+}
+
+body.lock {
+	overflow: hidden;
+}
+img {
+	border: none;
+	outline: none;
+}
+a {
+	position: relative;
+	cursor: pointer;
+}
+ul, li {
+    display: block;
+}
+
+.container {
+	width: 100vw;
+	margin: 0 auto;
+	position: relative;
+}
+
+
+.d-flex {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -o-flex;
+	display: flex;
+}
+table {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+font-size: 14px;
+border-collapse: collapse;
+text-align: center;
+}
+th, td:first-child {
+background: #AFCDE7;
+color: white;
+padding: 10px 20px;
+}
+th, td {
+border-style: solid;
+border-width: 0 1px 1px 0;
+border-color: white;
+}
+td {
+background: #D8E6F3;
+}
+th:first-child, td:first-child {
+text-align: left;
+}
+
+.table {
+	position: relative;
+	left: 35%;
+	margin-top: 100px;
+}
+.btn_up, .btn{
+	margin: 0 auto;
+}
+.btn_up{
+	display: none;
+}
+.interval{
+	position: relative;
+	margin-top: 25px;
+	left: 55%;
+	margin-right: 10px;
+}
