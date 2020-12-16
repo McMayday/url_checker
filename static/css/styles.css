@@ -72,3 +72,10 @@ text-align: left;
 	left: 55%;
 	margin-right: 10px;
 }
+
+.green {
+	color: green;
+}
+.red {
+	color: red;
+}

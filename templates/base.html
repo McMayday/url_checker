@@ -28,7 +28,11 @@
     <tr>
       {% csrf_token %}
       {% for url, status in urls.items %}
-      <td><a href="{{url}}">{{url}}</a></td>
+      {% if status == 200 %}
+      <td><a class='green' href="{{url}}">{{url}}</a></td>
+      {% elif status != 200 %}
+      <td><a class='red' href="{{url}}">{{url}}</a></td>
+      {% endif%}
       <td class='status'>{{status}}</td>
       <td><button class='btn'type="button" name="{{url}}">Pause</button>
       <button class='btn_up'type="button" name="{{url}}">Unpause</button></td>
