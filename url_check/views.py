@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views.generic import View
-from django.shortcuts import render
 from .models import *
 import requests
 from .tasks import *
@@ -27,27 +26,24 @@ class Main(View):
     status = Status_Descriptor()
 
     def get(self, request):
-        status = Status_Descriptor()
         all_urls = Url.objects.all()
         urls = {}
         if all_urls:
             for url in all_urls:
                 name = url.url_name
                 self.status = url.url_name
-                print(Main.status)
                 urls[name] = self.status
         return render(request, 'url_check/index.html', context={'urls': urls})
 
 
 
 class Ajax_Handler(View):
-    timedelta = 10
+
     def post(self, request):
         if request.is_ajax():
             interval = int(json.loads(request.POST.get('interval')))
             q_url = request.POST.get('url')
             flag = request.POST.get('flag')
-            print(q_url)
             test.delay(interval)
             if q_url:
                 url = Url.objects.get(url_name__iexact = q_url)
@@ -56,7 +52,6 @@ class Ajax_Handler(View):
                 elif flag == '2':
                     url.url_checker = True
                 url.save()
-                print(url, url.url_checker)
             context ={}
             items = Url.objects.all().values()
             for item in items:

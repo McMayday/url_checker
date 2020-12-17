@@ -18,20 +18,19 @@ def change_status(url):
 def test(time):
     schedule, created = IntervalSchedule.objects.get_or_create( every=time,  period=IntervalSchedule.SECONDS, )
     try:
-        task = PeriodicTask.objects.get(name__iexact = 'howhowhow4')
+        task = PeriodicTask.objects.get(name__iexact = 'check_interval')
         task.delete()
     except:
         pass
     PeriodicTask.objects.create(
     interval=schedule,
-    name='howhowhow4',
+    name='check_interval',
     task='url_check.tasks.set_interval',
     )
 
 
 @shared_task
 def set_interval():
-    print('faaakakfa')
     urls = Url.objects.all()
     for url in urls:
         if url.url_checker == True:
