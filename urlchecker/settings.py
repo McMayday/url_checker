@@ -82,14 +82,13 @@ WSGI_APPLICATION = 'urlchecker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '***',
-        'USER': '***',
+        'NAME': 'windr2',
+        'USER': 'admin',
         'PASSWORD': '1',
         'HOST': 'localhost',
         'PORT': '5433',
     }
 }
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -119,19 +118,26 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend"
+)
+
 SITE_ID = 2
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 LOGIN_REDIRECT_URL = "/"
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "**"
-EMAIL_HOST_PASSWORD = "**"
+EMAIL_HOST_USER = "windrevolt@gmail.com"
+EMAIL_HOST_PASSWORD = "leoleo22100909"
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = "**"
+DEFAULT_FROM_EMAIL = "windrevolt@gmail.com"
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 

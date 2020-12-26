@@ -7,7 +7,7 @@ from django.http import JsonResponse
 import json
 
 
-class Status_Descriptor:
+class StatusDescriptor:
     def __set_name__(self, owner_class, property_name):
         self.property_name = property_name
 
@@ -37,7 +37,7 @@ class Main(View):
 
 
 
-class Ajax_Handler(View):
+class AjaxHandler(View):
 
     def post(self, request):
         if request.is_ajax():
